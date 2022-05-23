@@ -4,7 +4,7 @@ end
 
 def print_message
   puts "\n"
-  puts "Please choose an option by enterin a number:
+  puts "Please choose an option by entering a number:
   [1] - List all books
   [2] - List all music albums
   [3] - List of Games
