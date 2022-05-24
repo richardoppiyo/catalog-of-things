@@ -7,7 +7,11 @@ RSpec.describe Genre do
     @genre = Genre.new(1, 'Classic')
   end
 
-  it 'Create Items' do
+  it 'Create an instance of Genre' do
+    expect(@genre).to be_an_instance_of(Genre)
+  end
+
+  it 'Add items to genre' do
     item1 = MusicAlbum.new(1, false, '2022/05/23', false)
     item2 = MusicAlbum.new(2, false, '2022/05/23', false)
     @genre.add_item(item1)
@@ -16,6 +20,12 @@ RSpec.describe Genre do
     expect(json).to be == '{"json_class":"Genre","data":[1,"Classic"],'         \
                           '"items":[[{"json_class":"MusicAlbum","data":[1,false,"2022/05/23",false]},'\
                           '{"json_class":"MusicAlbum","data":[2,false,"2022/05/23",false]}]]}'
+  end
+
+  it 'Create items from JSON' do
+    json = '{"json_class":"Genre","data":[1,"Classic"],'         \
+           '"items":[[{"json_class":"MusicAlbum","data":[1,false,"2022/05/23",false]},'\
+           '{"json_class":"MusicAlbum","data":[2,false,"2022/05/23",false]}]]}'
     new_genre = JSON.parse(json, create_additions: true)
     items = new_genre.items
     expect(items.length).to be == 2
