@@ -7,7 +7,10 @@ def main
   loop do
     print_message
     selection = gets.chomp
-    puts 'Thank you for using this app!' if selection == '10'
+    if selection == '10'
+      puts 'Thank you for using this app!'
+      app.save_data
+    end
     break if selection == '10'
 
     run(selection, app)
