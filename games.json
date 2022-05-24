@@ -1,1 +1,1 @@
-[{"multiplayer":false,"last_played_at":"2021/07/26","publish_date":null},{"multiplayer":true,"last_played_at":"2021/07/26","publish_date":null},{"multiplayer":true,"last_played_at":"1999/07/26","publish_date":null},{"multiplayer":true,"last_played_at":"2021/07/06","publish_date":null}]
+[{"json_class":"Author","data":[1,"John","Doe"],"items":[[{"json_class":"Game","data":[4445,false,"1993/07/26",true,"2022/05/24"]}]]},{"json_class":"Author","data":[2,"Jane","Doe"],"items":[[]]}]

@@ -1,18 +1,14 @@
 class Item
-  attr_reader :id, :archived
-  attr_accessor :publish_date, :genre, :label, :author
-
-  def initialize(archived, publish_date, id: rand(1000))
+  def initialize(id, archived, publish_date)
     @id = id
     @archived = archived
     @publish_date = publish_date
-    @author = nil
   end
 
   attr_reader :publish_date, :genre, :label, :author
 
   def move_to_archive
-    @archived = true if can_be_archived?
+    @archived = true if can_be_archived
   end
 
   def add_author(author)
@@ -29,7 +25,7 @@ class Item
 
   private
 
-  def can_be_archived?
+  def can_be_archived
     # yyyy/mm/dd
     publish_year = @publish_date.split('/')
     current_year = Date.today.year
