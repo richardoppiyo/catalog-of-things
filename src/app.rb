@@ -1,8 +1,8 @@
 require_relative './item'
 require_relative './author'
 require_relative './game'
-require_relative './author_storage'
-require_relative './game_storage'
+require_relative './author_save_data'
+require_relative './game_save_data'
 
 class App
   include AuthorsData
