@@ -23,18 +23,13 @@ class Genre
   end
 
   def self.json_create(object)
-    puts "Data:#{object['data']}"
-    puts "Items:#{object['items']}"
     genre = new(*object['data'])
     genre.items = object['items'][0]
     genre.update_associations
     genre
   end
 
-  private
-
   def update_associations
     @items.each { |item| item.add_genre(self) }
   end
-
 end
