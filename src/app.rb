@@ -24,7 +24,9 @@ class App
   def list_of_games
     puts 'Games list is empty' if @games.empty?
     @games.each do |game|
-      puts game
+      puts "Multiplayer : #{game.multiplayer},
+      Last played at : #{game.last_played_at},
+      Publish date : #{game.publish_date}"
     end
   end
 
@@ -39,7 +41,7 @@ class App
   def list_all_authors
     puts 'Authors list is empty' if @authors.empty?
     @authors.each do |author|
-      puts author
+      puts "First name : #{author.first_name}, Last name : #{author.last_name}"
     end
   end
 
@@ -52,8 +54,16 @@ class App
   end
 
   def add_game
-    puts 'Is it a multiplayer game? [Enter answer as true or false]'
-    multiplayer = gets.chomp.to_s.casecmp('true').zero?
+    puts 'Is it a multiplayer game? [Enter answer as y/n]'
+    key = gets.chomp
+    case key
+    when 'y'
+      multiplayer = true
+    when 'n'
+      multiplayer = false
+    else
+      puts 'Unknown answer'
+    end
     puts 'When was it last played? [Enter answer as yyyy/mm/dd]'
     last_played_at = gets.chomp
     puts 'When was it published? [Enter answer as yyyy/mm/dd]'
