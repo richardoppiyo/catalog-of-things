@@ -3,14 +3,14 @@ require_relative './author'
 require_relative './game'
 require_relative './author_save_data'
 require_relative './game_save_data'
+require 'json'
 
 class App
   include AuthorsData
   include GameData
 
   def initialize
-    @authors = read_authors
-    @games = read_games
+    @authors = []
   end
 
   def list_all_books

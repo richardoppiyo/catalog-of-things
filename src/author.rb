@@ -2,10 +2,10 @@ class Author
   attr_accessor :first_name, :last_name
   attr_reader :id, :items
 
-  def initialize(first_name, last_name)
+  def initialize(id, first_name, last_name)
     @first_name = first_name
     @last_name = last_name
-    @id = rand(1000)
+    @id = id
     @items = []
   end
 
@@ -18,4 +18,18 @@ class Author
     @items.push(item) unless @items.include?(item)
     item.author = self
   end
+
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'data' => [@id, @first_name, @last_name]
+      'items' => [@items]
+    }.to_json(*args)
+  end
+
+def self.json_create(object)
+  author = new(*object['data'])
+  author.items = object['items'][0]
+  author
+end
 end
