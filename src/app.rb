@@ -83,41 +83,41 @@ class App
     @authors.each do |author|
       puts "Author: #{author.first_name}"
     end
+  end
 
-    def add_book
-      puts 'Add book'
-    end
+  def add_book
+    puts 'Add book'
+  end
 
-    def add_music_album
-      puts 'Add music album'
-      puts "\nPlease enter publish date (yyyy/mm/dd):"
-      publish_date = gets.chomp
-      puts 'Archived item (y/n)'
-      archived = gets.chomp.downcase == 'y'
-      puts 'It is on Spotify? (y/n)'
-      spotify = gets.chomp.downcase == 'y'
-      puts 'Select a genre from the following list by number (not id)'
-      @genres.each_with_index { |genre, index| puts "[#{index}] #{genre.name}" }
-      index = gets.chomp.to_i
-      @genres[index].add_item(MusicAlbum.new(Random.rand(1..10_000), archived, publish_date, spotify))
-      puts 'Music album created successfully'
-    end
+  def add_music_album
+    puts 'Add music album'
+    puts "\nPlease enter publish date (yyyy/mm/dd):"
+    publish_date = gets.chomp
+    puts 'Archived item (y/n)'
+    archived = gets.chomp.downcase == 'y'
+    puts 'It is on Spotify? (y/n)'
+    spotify = gets.chomp.downcase == 'y'
+    puts 'Select a genre from the following list by number (not id)'
+    @genres.each_with_index { |genre, index| puts "[#{index}] #{genre.name}" }
+    index = gets.chomp.to_i
+    @genres[index].add_item(MusicAlbum.new(Random.rand(1..10_000), archived, publish_date, spotify))
+    puts 'Music album created successfully'
+  end
 
-    def add_game
-      puts 'Add game'
-      puts "\nPlease enter publish date (yyyy/mm/dd):"
-      publish_date = gets.chomp
-      puts 'Archived item (y/n)'
-      archived = gets.chomp.downcase == 'y'
-      puts 'It is multiplayer? (y/n)'
-      multiplayer = gets.chomp.downcase == 'y'
-      puts 'when it was last played? (yyyy/mm/dd)'
-      last_played = gets.chomp
-      puts 'Select an author from the following list by number (not id)'
-      @authors.each_with_index { |author, index| puts "[#{index}] #{author.first_name} #{author.last_name}" }
-      index = gets.chomp.to_i
-      @authors[index].add_item(Game.new(Random.rand(1..10_000), archived, publish_date, multiplayer, last_played))
-      puts 'Game created successfully'
-    end
+  def add_game
+    puts 'Add game'
+    puts "\nPlease enter publish date (yyyy/mm/dd):"
+    publish_date = gets.chomp
+    puts 'Archived item (y/n)'
+    archived = gets.chomp.downcase == 'y'
+    puts 'It is multiplayer? (y/n)'
+    multiplayer = gets.chomp.downcase == 'y'
+    puts 'when it was last played? (yyyy/mm/dd)'
+    last_played = gets.chomp
+    puts 'Select an author from the following list by number (not id)'
+    @authors.each_with_index { |author, index| puts "[#{index}] #{author.first_name} #{author.last_name}" }
+    index = gets.chomp.to_i
+    @authors[index].add_item(Game.new(Random.rand(1..10_000), archived, publish_date, multiplayer, last_played))
+    puts 'Game created successfully'
   end
 end
