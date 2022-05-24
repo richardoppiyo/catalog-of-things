@@ -1,5 +1,8 @@
 require_relative './genre'
 require_relative './music_album'
+require_relative './item'
+require_relative './author'
+require_relative './game'
 require 'json'
 
 class App
@@ -24,8 +27,7 @@ class App
 
   def save_data
     File.write('./music_albums.json', JSON.generate(@genres)) unless @genres.empty?
-  end
-
+    
   def list_all_books
     puts 'List of books'
   end
@@ -38,7 +40,12 @@ class App
   end
 
   def list_of_games
-    puts 'List of games'
+    puts 'Games list is empty' if @games.empty?
+    @games.each do |game|
+      puts "Multiplayer : #{game.multiplayer},
+      Last played at : #{game.last_played_at},
+      Publish date : #{game.publish_date}"
+    end
   end
 
   def list_all_genres
@@ -53,7 +60,10 @@ class App
   end
 
   def list_all_authors
-    puts 'List of authors'
+    puts 'Authors list is empty' if @authors.empty?
+    @authors.each do |author|
+      puts "First name : #{author.first_name}, Last name : #{author.last_name}"
+    end
   end
 
   def add_book
@@ -76,6 +86,22 @@ class App
   end
 
   def add_game
-    puts 'Add game'
+    puts 'Is it a multiplayer game? [Enter answer as y/n]'
+    key = gets.chomp
+    case key
+    when 'y'
+      multiplayer = true
+    when 'n'
+      multiplayer = false
+    else
+      puts 'Unknown answer'
+    end
+    puts 'When was it last played? [Enter answer as yyyy/mm/dd]'
+    last_played_at = gets.chomp
+    puts 'When was it published? [Enter answer as yyyy/mm/dd]'
+    publish_date = gets.chomp
+    @games.push(Game.new(multiplayer, last_played_at, publish_date))
+    write_games(@games)
+    puts 'Game added'
   end
 end
