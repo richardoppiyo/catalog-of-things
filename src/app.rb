@@ -2,20 +2,18 @@ require_relative './book'
 require_relative './label'
 require_relative './input'
 
-
 class App
   include Input
 
   def initialize
     @books = []
     @label = []
-     if File.exist?('./books.json')
+    if File.exist?('./books.json')
       @label = JSON.parse(File.read('./books.json'), create_additions: true)
     else
       load_default_labels
     end
   end
-
 
   def load_default_labels
     @label.push(Label.new(1, 'Algorithms', 'Green'))
@@ -27,15 +25,13 @@ class App
   end
 
   def save_data
-    File.write('./books.json', JSON.generate(@label)) 
-    # unless @labels.empty?
+    File.write('./books.json', JSON.generate(@label))
   end
 
   def list_all_books
-    puts "Sorry, there are no books in the books list" if @label.empty?
+    puts 'Sorry, there are no books in the books list' if @label.empty?
     @label.each do |book|
-      puts book.items 
-      # puts "publisher : #{book.title}"
+      puts book.items
     end
   end
 
@@ -52,7 +48,7 @@ class App
   end
 
   def list_all_labels
-    puts "Sorry, there are no labels in the label list" if @label.empty?
+    puts 'Sorry, there are no labels in the label list' if @label.empty?
     @label.each do |label|
       puts "title: #{label.title}, color: #{label.color}"
     end
@@ -74,9 +70,11 @@ class App
     puts 'Please enter publish date?'
     publish_date = gets.chomp
 
-    @label[0].add_items(Book.new(publish_date, archived, publisher, cover_state, Random.rand(1..10_000)))
+    puts 'Select a label for the book from the following list (not id)'
+    @label.each_with_index { |label, index| puts "[#{index}] #{label.title}" }
+    index = gets.chomp.to_i
 
-    # @books.push(Book.new(publish_date, archived, publisher, cover_state, Random.rand(1..10_000)))
+    @label[index].add_items(Book.new(publish_date, archived, publisher, cover_state, Random.rand(1..10_000)))
     puts 'Book created succesfully!'
   end
 
