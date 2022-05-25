@@ -1,40 +1,53 @@
-# Catalog::Of::Things
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/catalog/of/things`. To experiment with that code, run `bin/console` for an interactive prompt.
+# Catalog of my things
 
-TODO: Delete this and the text above, and describe your gem
+A console application written in Ruby that allows you to catalog your things
 
-## Installation
+## Built With
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'catalog-of-things'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install catalog-of-things
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/catalog-of-things.
+- Ruby
 
 
-## License
+## Getting Started
 
+To get a local copy follow these simple example steps.  
+
+1.- Open the terminal window and clone the repository using this command:  
+`git clone git@github.com:richardoppiyo/catalog-of-things.git` 
+
+2.- Change the directory to the catalog-of-things directory  
+`cd catalog-of-things`  
+3.- Install the project's dependencies by running this command:   
+`bundle install`  
+4.- Run the program using this command:  
+`ruby ./main.rb`  
+
+
+## Authors
+
+👤 **Francisco Ponce**
+- GitHub: [@franciscoPonceDev](https://github.com/franciscoPonceDev)  
+- LinkedIn: [Francisco Ponce](https://www.linkedin.com/in/dev-ponce/)
+
+👤 **Richard Opiyo**
+- GitHub: [@richardoppiyo](https://github.com/richardoppiyo)
+- Twitter: [@blessed_ricky](https://twitter.com/blessed_ricky)
+- LinkedIn: [Richard Opiyo](https://linkedin.com/in/richardoppiyo)
+
+👤 **Victor Peralta**
+- GitHub: [@VicPeralta](https://github.com/VicPeralta)
+- Twitter: [@VicPeralta](https://twitter.com/VicPeralta)
+- Linkedin: [@VicPeralta](https://www.linkedin.com/in/vicperalta/)
+
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
