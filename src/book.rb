@@ -24,6 +24,7 @@ class Book < Item
   def to_s
     "Id:#{@id} Published date: #{@publish_date} "\
       "publisher: #{@publisher} "\
+      "label: #{@label.title} "\
       "cover_state: #{@cover_state}  Archived: #{@archived}"
   end
 
