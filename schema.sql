@@ -37,3 +37,25 @@ CREATE TABLE game(
     FOREIGN KEY (author)
         REFERENCES author (id)
 );
+
+
+--To create label table
+CREATE TABLE labels (
+	id			integer GENERATED ALWAYS AS IDENTITY,
+	title		varchar(50),
+	color		varchar(50),
+	PRIMARY KEY(id)
+)
+
+
+--To create books table
+CREATE TABLE books (
+	book_id					integer GENERATED ALWAYS AS IDENTITY,
+	label_id 				integer,
+	FOREIGN KEY (label_id) 	REFERENCES labels(id),
+	publish_date			date, 
+	archived				boolean not null default false, 
+	publisher				varchar(50), 
+	cover_state				varchar(50), 
+	PRIMARY KEY(book_id)
+)
