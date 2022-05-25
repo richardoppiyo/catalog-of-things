@@ -127,7 +127,7 @@ class App
     puts 'Select a label for the book from the following list (not id)'
     @label.each_with_index { |label, index| puts "[#{index}] #{label.title}" }
     index = gets.chomp.to_i
-    @label[index].add_items(Book.new(publish_date, archived, publisher, cover_state, Random.rand(1..10_000)))
+    @label[index].add_items(Book.new(Random.rand(1..10_000), archived,  publish_date, publisher, cover_state))
     puts 'Book created succesfully!'
   end
 
