@@ -61,7 +61,7 @@ class App
 
   def load_default_labels
     @label.push(Label.new('Algorithms', 'Green', 1))
-    @label.push(Label.new('Science Fictions', 'Red',2))
+    @label.push(Label.new('Science Fictions', 'Red', 2))
     @label.push(Label.new('Classicals', 'Blue', 3))
     @label.push(Label.new('Educational', 'White', 4))
     @label.push(Label.new('Geographical', 'Purple', 5))
