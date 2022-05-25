@@ -60,12 +60,12 @@ class App
   end
 
   def load_default_labels
-    @label.push(Label.new('Algorithms', 'Green', 1))
-    @label.push(Label.new('Science Fictions', 'Red', 2))
-    @label.push(Label.new('Classicals', 'Blue', 3))
-    @label.push(Label.new('Educational', 'White', 4))
-    @label.push(Label.new('Geographical', 'Purple', 5))
-    @label.push(Label.new('General Knowlege', 'Orange', 6))
+    @label.push(Label.new(1, 'Algorithms', 'Green'))
+    @label.push(Label.new(2, 'Science Fictions', 'Red'))
+    @label.push(Label.new(3, 'Classicals', 'Blue'))
+    @label.push(Label.new(4, 'Educational', 'White'))
+    @label.push(Label.new(5, 'Geographical', 'Purple'))
+    @label.push(Label.new(6, 'General Knowlege', 'Orange'))
   end
 
   def save_data
@@ -119,19 +119,14 @@ class App
   def add_book
     puts 'Please enter the publisher name?'
     publisher = gets.chomp
-
     puts 'Please enter the cover state of the book?'
     cover_state = gets.chomp
-
     archived = y_n { 'is it archived?:[Y or N]' }
-
     puts 'Please enter publish date?'
     publish_date = gets.chomp
-
     puts 'Select a label for the book from the following list (not id)'
-    @label.each_with_index { |label, index| puts "[#{index}] #{label.color}" }
+    @label.each_with_index { |label, index| puts "[#{index}] #{label.title}" }
     index = gets.chomp.to_i
-
     @label[index].add_items(Book.new(publish_date, archived, publisher, cover_state, Random.rand(1..10_000)))
     puts 'Book created succesfully!'
   end

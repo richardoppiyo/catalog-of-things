@@ -3,7 +3,7 @@ require_relative './item'
 class Label
   attr_accessor :items, :color, :title
 
-  def initialize(title, color, id)
+  def initialize(id, title, color)
     @id = id
     @title = title
     @color = color
