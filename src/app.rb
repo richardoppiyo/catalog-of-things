@@ -18,17 +18,21 @@ class App
 
 
   def load_default_labels
-    @label.push(Label.new(1, 'Classic', 'green'))
-    @label.push(Label.new(2, 'Rock', 'black'))
+    @label.push(Label.new(1, 'Algorithms', 'Green'))
+    @label.push(Label.new(2, 'Science Fictions', 'Red'))
+    @label.push(Label.new(1, 'Classicals', 'Blue'))
+    @label.push(Label.new(2, 'Educational', 'White'))
+    @label.push(Label.new(1, 'Geographical', 'Purple'))
+    @label.push(Label.new(2, 'General Knowlege', 'Orange'))
   end
 
   def save_data
-    File.write('./books.json', JSON.generate(@labels)) 
+    File.write('./books.json', JSON.generate(@label)) 
     # unless @labels.empty?
   end
 
   def list_all_books
-    # puts "Sorry, there are no books in the books list" if @label.empty?
+    puts "Sorry, there are no books in the books list" if @label.empty?
     @label.each do |book|
       puts book.items 
       # puts "publisher : #{book.title}"
@@ -48,8 +52,8 @@ class App
   end
 
   def list_all_labels
-    puts "Sorry, there are no labels in the label list" if @books.empty?
-    @labels.each do |label|
+    puts "Sorry, there are no labels in the label list" if @label.empty?
+    @label.each do |label|
       puts "title: #{label.title}, color: #{label.color}"
     end
   end
@@ -70,7 +74,9 @@ class App
     puts 'Please enter publish date?'
     publish_date = gets.chomp
 
-    @books.push(Book.new(publish_date, archived, publisher, cover_state, Random.rand(1..10_000)))
+    @label[0].add_items(Book.new(publish_date, archived, publisher, cover_state, Random.rand(1..10_000)))
+
+    # @books.push(Book.new(publish_date, archived, publisher, cover_state, Random.rand(1..10_000)))
     puts 'Book created succesfully!'
   end
 

@@ -1,1 +1,1 @@
-[{"json_class":"Label","data":["Classic","green",1],"items":[[]]},{"json_class":"Label","data":["Rock","black",2],"items":[[]]}]
+[{"json_class":"Label","data":["Classic","green",1],"items":[[{"json_class":"Book","data":["4774243",true,"richard","hello",7729]},{"json_class":"Book","data":["2012/05/25",true,"Fransisco","Good",6805]}]]},{"json_class":"Label","data":["Rock","black",2],"items":[[]]}]

@@ -5,9 +5,9 @@ class Book  < Item
 	attr_accessor :publisher, :cover_state
 
 	def initialize(publish_date, archived, publisher, cover_state, id)
-		super(@publish_date, @archived, @id)
+		super(publish_date, archived, id)
 		@publisher = publisher
-	    @cover_state = cover_state
+	  @cover_state = cover_state
     end
 
     def to_json(*args)
@@ -24,13 +24,13 @@ class Book  < Item
 
   def to_s
     "Id:#{@id} Published date: #{@publish_date} " \
-      "publisher: #{@publisher}" \
-      "cover_state: #{@cover_state},Archived: #{@archived}"
+      "publisher: #{@publisher} " \ 
+      "cover_state: #{@cover_state}  Archived: #{@archived}"
   end
 
-    def can_be_archived
-   		return true if super == true || @cover_state == ' bad'
+  def can_be_archived
+   	return true if super == true || @cover_state == 'bad'
 
-   		false
-  	end
+   	false
+  end
 end
