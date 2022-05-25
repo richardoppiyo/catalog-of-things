@@ -1,1 +1,1 @@
-[{"json_class":"Author","data":[1,"John","Doe"],"items":[[{"json_class":"Game","data":[4445,false,"1993/07/26",true,"2022/05/24"]}]]},{"json_class":"Author","data":[2,"Jane","Doe"],"items":[[]]}]
+[{"json_class":"Author","data":[1,"John","Doe"],"items":[[{"json_class":"Game","data":["1993/07/26",false,4445,true,"2022/05/24"]}]]},{"json_class":"Author","data":[2,"Jane","Doe"],"items":[[]]}]
