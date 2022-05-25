@@ -5,6 +5,8 @@ class Item
     @publish_date = publish_date
   end
 
+  attr_reader :publish_date, :genre, :label, :author
+
   def move_to_archive
     @archived = true if can_be_archived
   end
