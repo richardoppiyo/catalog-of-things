@@ -14,6 +14,10 @@ class App
   def initialize
     load_genres_and_albums
     load_authors_and_games
+    load_books_and_labels
+  end
+
+  def load_books_and_labels
     @label = []
     if File.exist?('./books.json')
       @label = JSON.parse(File.read('./books.json'), create_additions: true)
@@ -21,34 +25,6 @@ class App
       load_default_labels
     end
   end
-  
-  def load_genres_and_albums
-    @genres = []
-    if File.exist?('./music_albums.json')
-      @genres = JSON.parse(File.read('./music_albums.json'), create_additions: true)
-    else
-      load_default_genres
-    end
-  end
-  
-  def load_default_genres
-    @genres.push(Genre.new(1, 'Classic'))
-    @genres.push(Genre.new(2, 'Rock & Roll'))
-    @genres.push(Genre.new(3, 'Latin'))
-    @genres.push(Genre.new(4, 'Electronic'))
-    @genres.push(Genre.new(5, 'Jazz'))
-    @genres.push(Genre.new(6, 'Hip Hop'))
-    @genres.push(Genre.new(7, 'Pop'))
-  end
-
-  def load_authors_and_games
-    @authors = []
-    if File.exist?('./games.json')
-      @authors = JSON.parse(File.read('./games.json'), create_additions: true)
-    else
-      load_default_author
-    end
-  end
 
   def load_genres_and_albums
     @genres = []
@@ -76,6 +52,11 @@ class App
     else
       load_default_author
     end
+  end
+
+  def load_default_author
+    @authors.push(Author.new(1, 'John', 'Doe'))
+    @authors.push(Author.new(2, 'Jane', 'Doe'))
   end
 
   def load_default_labels
@@ -85,16 +66,6 @@ class App
     @label.push(Label.new(2, 'Educational', 'White'))
     @label.push(Label.new(1, 'Geographical', 'Purple'))
     @label.push(Label.new(2, 'General Knowlege', 'Orange'))
-  end
-  
-   def load_default_author
-    @authors.push(Author.new(1, 'John', 'Doe'))
-    @authors.push(Author.new(2, 'Jane', 'Doe'))
-  end
-
-  def load_default_author
-    @authors.push(Author.new(1, 'John', 'Doe'))
-    @authors.push(Author.new(2, 'Jane', 'Doe'))
   end
 
   def save_data
