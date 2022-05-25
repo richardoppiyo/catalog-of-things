@@ -4,8 +4,8 @@ require 'json'
 class Book < Item
   attr_accessor :publisher, :cover_state
 
-  def initialize(publish_date, archived, publisher, cover_state, id)
-    super(publish_date, archived, id)
+  def initialize(id, archived, publish_date, publisher, cover_state)
+    super(id, archived, publish_date)
     @publisher = publisher
     @cover_state = cover_state
   end
@@ -13,7 +13,7 @@ class Book < Item
   def to_json(*args)
     {
       JSON.create_id => self.class.name,
-      'data' => [@publish_date, @archived, @publisher, @cover_state, @id]
+      'data' => [@id, @archived, @publish_date, @publisher, @cover_state]
     }.to_json(*args)
   end
 

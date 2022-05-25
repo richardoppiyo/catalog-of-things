@@ -4,7 +4,7 @@ require 'json'
 
 RSpec.describe Book do
   before :each do
-    @book = Book.new('2013/03/12', true, 'richard', 'rocky', 4846)
+    @book = Book.new(4846, true, '2013/03/12', 'richard', 'rocky')
   end
 
   it 'Create an instance of the book object' do
@@ -25,11 +25,11 @@ RSpec.describe Book do
     label = Label.new(3, 'Classicals', 'Blue')
     label.add_items(@book)
     json = JSON.generate(@book)
-    expect(json).to be == '{"json_class":"Book","data":["2013/03/12",true,"richard","rocky",4846]}'
+    expect(json).to be == '{"json_class":"Book","data":[4846,true,"2013/03/12","richard","rocky"]}'
   end
 
   it 'creates instance from JSON string' do
-    json = '{"json_class":"Book","data":["2013/03/12",true,"richard","rocky",4846]}'
+    json = '{"json_class":"Book","data":[4846,true,"2013/03/12","richard","rocky"]}'
     new_book = JSON.parse(json, create_additions: true)
     expect(new_book).to be_an_instance_of(Book)
   end

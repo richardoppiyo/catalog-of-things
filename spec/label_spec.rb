@@ -12,12 +12,12 @@ RSpec.describe Label do
   end
 
   it 'Add items to labels' do
-    book1 = Book.new('2013/03/12', true, 'richard', 'rocky', 4846)
+    book1 = Book.new(4846, true, '2013/03/12', 'richard', 'rocky')
     @label.add_items(book1)
     json = JSON.generate(@label)
     expect(json).to be == '{"json_class":"Label","data":[2,"Science Fictions","Red"],'         \
                           '"items":[[{"json_class":"Book","data":'\
-                          '["2013/03/12",true,"richard","rocky",4846]}]]}'
+                          '[4846,true,"2013/03/12","richard","rocky"]}]]}'
   end
 
   it 'Create empty label from JSON' do
