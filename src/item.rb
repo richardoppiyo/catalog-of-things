@@ -1,5 +1,5 @@
 class Item
-  def initialize(id, archived, publish_date)
+  def initialize(publish_date, archived, id)
     @id = id
     @archived = archived
     @publish_date = publish_date

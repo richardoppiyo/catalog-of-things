@@ -1,3 +1,6 @@
+require_relative './book'
+require_relative './label'
+require_relative './input'
 require_relative './item'
 require_relative './genre'
 require_relative './music_album'
@@ -6,9 +9,21 @@ require_relative './game'
 require 'json'
 
 class App
+  include Input
+
   def initialize
     load_genres_and_albums
     load_authors_and_games
+    load_books_and_labels
+  end
+
+  def load_books_and_labels
+    @label = []
+    if File.exist?('./books.json')
+      @label = JSON.parse(File.read('./books.json'), create_additions: true)
+    else
+      load_default_labels
+    end
   end
 
   def load_genres_and_albums
@@ -44,13 +59,26 @@ class App
     @authors.push(Author.new(2, 'Jane', 'Doe'))
   end
 
+  def load_default_labels
+    @label.push(Label.new(1, 'Algorithms', 'Green'))
+    @label.push(Label.new(2, 'Science Fictions', 'Red'))
+    @label.push(Label.new(3, 'Classicals', 'Blue'))
+    @label.push(Label.new(4, 'Educational', 'White'))
+    @label.push(Label.new(5, 'Geographical', 'Purple'))
+    @label.push(Label.new(6, 'General Knowlege', 'Orange'))
+  end
+
   def save_data
+    File.write('./books.json', JSON.generate(@label))
     File.write('./games.json', JSON.generate(@authors))
     File.write('./music_albums.json', JSON.generate(@genres))
   end
 
   def list_all_books
-    puts 'List of books'
+    puts 'Sorry, there are no books in the books list' if @label.empty?
+    @label.each do |book|
+      puts book.items
+    end
   end
 
   def list_all_music_albums
@@ -75,7 +103,10 @@ class App
   end
 
   def list_all_labels
-    puts 'List of labels'
+    puts 'Sorry, there are no labels in the label list' if @label.empty?
+    @label.each do |label|
+      puts "title: #{label.title}, color: #{label.color}"
+    end
   end
 
   def list_all_authors
@@ -86,7 +117,18 @@ class App
   end
 
   def add_book
-    puts 'Add book'
+    puts 'Please enter the publisher name?'
+    publisher = gets.chomp
+    puts 'Please enter the cover state of the book?'
+    cover_state = gets.chomp
+    archived = y_n { 'is it archived?:[Y or N]' }
+    puts 'Please enter publish date?'
+    publish_date = gets.chomp
+    puts 'Select a label for the book from the following list (not id)'
+    @label.each_with_index { |label, index| puts "[#{index}] #{label.title}" }
+    index = gets.chomp.to_i
+    @label[index].add_items(Book.new(publish_date, archived, publisher, cover_state, Random.rand(1..10_000)))
+    puts 'Book created succesfully!'
   end
 
   def add_music_album
